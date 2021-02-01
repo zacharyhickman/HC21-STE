@@ -1,0 +1,38 @@
+\\\\ STE BUS NOTES
+STE Needs:
+
+1. System Controller:
+	* Inputs:
+		- TFRERR*	(Transfer error)
+	* Outputs:
+		- SYSCLK 	(Clock signal, 16MHz)
+		- SYSRST*	(Reset signal, PWRON Reset)
+		
+2. Arbiter:	
+	* Inputs:
+		- BUSRQ0*	(Bus request 0)
+		- BUSRQ1*	(Bus request 1)
+	* Outputs:
+		- BUSAK0*	(Bus acknowledge 0)
+		- BUSAK1*	(Bus acknowledge 1)
+	
+3. Default Master:
+	* 
+	
+4. Master(s):
+	* Inputs:
+		- DATACK*	(Data acknowledge)
+	* In/Outs:
+		- D[7:0]	(Data bus, 8 bits)
+	* Outputs:
+		- A[19:0]	(Address bus, 20 bits)
+		- DATSTB*	(Data strobe)
+		- CM0		(Commmand line, RD/WR*)
+		- CM1		(Commmand line, MEM/IO*)
+		- CM2		(Commmand line, VECFETCH*)
+		
+  
+5. Slave(s):
+	* 
+
+////

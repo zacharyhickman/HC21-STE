@@ -1,0 +1,19 @@
+
+CUPL(WM)        5.0a  Serial# 60008009
+Device          g22v10  Library DLIB-h-40-1
+Created         Sun Aug 11 11:09:44 2019
+Name            STEBusZ80MMU 
+Partno          00 
+Revision        01 
+Date            8/7/2019 
+Designer        Zachary Hickman 
+Company         n/a 
+Assembly        None 
+Location        
+*QP24 
+*QF5892 
+*G0 
+*F0 
+*L05824 00000011000000110000001000000000
+*C01C0
+*5A33

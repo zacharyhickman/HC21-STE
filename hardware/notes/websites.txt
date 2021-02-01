@@ -1,0 +1,12 @@
+STEBus:
+https://link.springer.com/chapter/10.1007/978-1-349-10972-2_5
+https://hackaday.io/project/28956-stebus-z80-and-basic-compiler
+
+Misc:
+http://www.cpu-ns32k.net/index.html
+https://en.wikipedia.org/wiki/Cycle_stealing
+
+Parts:
+https://www.futurlec.com/74LS/74LS682.shtml
+http://susta.cz/fel/74/pdf/sn_74174.pdf
+http://www.applelogic.org/files/74LS367.pdf

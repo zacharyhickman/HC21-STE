@@ -1,0 +1,69 @@
+Name     STEBus_Z80_Arbiter_Interrupt_Handler ;
+PartNo   00 ;
+Date     8/9/2019 ;
+Revision 01 ;
+Designer Zachary Hickman ;
+Company  n/a ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+/*
+ * Bus Arbiter and Interrupt Priority Encoder for Z80 SBC
+ */
+
+/* *************** INPUT PINS ******************** */
+PIN 1 		= SYSCLK	; /* STEBus: System Clock */
+PIN 2 		= !ATNRQ0	; /* STEBus: Attention Request 0 */
+PIN 3 		= !ATNRQ1	; /* STEBus: Attention Request 1 */
+PIN 4 		= !ATNRQ2	; /* STEBus: Attention Request 2 */
+PIN 5 		= !ATNRQ3	; /* STEBus: Attention Request 3 */
+PIN 6 		= !ATNRQ4	; /* STEBus: Attention Request 4 */
+PIN 7 		= !ATNRQ5	; /* STEBus: Attention Request 5 */
+PIN 8 		= !ATNRQ6	; /* STEBus: Attention Request 6 */
+PIN 9 		= !ATNRQ7	; /* STEBus: Attention Request 7 */
+PIN 10		= !BUSRQ0	; /* STEBus: Bus Request 0 */
+PIN 11		= !BUSRQ1	; /* STEBus: Bus Request 1 */
+PIN 13		= !BUSAK	; /* Z80: Bus Acknowledge */
+
+/* *************** OUTPUT PINS ******************** */
+PIN 23		= A0		; /* STEBus: A0 */
+PIN 22		= A1		; /* STEBus: A1 */
+PIN 21		= A2		; /* STEBus: A2 */
+PIN 20		= !BUSAK0	; /* STEBus: Bus Acknowledge 0 */
+PIN 19		= !BUSAK1	; /* STEBus: Bus Acknowledge 1 */
+PIN 18		= !BUSRQ	; /* Z80: Bus Request */
+PIN 17		= !INT		; /* Z80: Interrupt Signal */
+PIN 16		= !NMI		; /* Z80: Non-maskable Interrupt Signal */
+
+/* *************** NODES ******************** */
+
+/* *************** SET/CLEARS ******************** */
+
+/* *************** EQUATIONS ******************** */
+INT 		= ATNRQ7 # ATNRQ6 # ATNRQ5 # ATNRQ4 # ATNRQ3 # ATNRQ2 # ATNRQ1;
+NMI 		= ATNRQ0;
+A0			= ATNRQ7 & !ATNRQ6 & !ATNRQ5 & !ATNRQ6 & !ATNRQ5 & !ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 # 
+				ATNRQ5 & !ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 #
+				ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 #
+				ATNRQ1 & !ATNRQ0;
+A1 			= ATNRQ7 & !ATNRQ6 & !ATNRQ5 & !ATNRQ6 & !ATNRQ5 & !ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 # 
+				ATNRQ6 & !ATNRQ5 & !ATNRQ6 & !ATNRQ5 & !ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 # 
+				ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 # 
+				ATNRQ2 & !ATNRQ1 & !ATNRQ0;
+A2 			= ATNRQ7 & !ATNRQ6 & !ATNRQ5 & !ATNRQ6 & !ATNRQ5 & !ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 #
+				ATNRQ6 & !ATNRQ5 & !ATNRQ6 & !ATNRQ5 & !ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 # 
+				ATNRQ5 & !ATNRQ6 & !ATNRQ5 & !ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0 # 
+				ATNRQ4 & !ATNRQ3 & !ATNRQ2 & !ATNRQ1 & !ATNRQ0;
+
+BUSAK1		= BUSAK & !BUSRQ0 & BUSRQ1 & !BUSAK0;
+BUSAK0		= BUSAK & BUSRQ0 & !BUSRQ1 & !BUSAK1;
+BUSRQ		= BUSRQ0 # BUSRQ1;
+
+
+
+
+
+
+
+

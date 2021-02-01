@@ -1,0 +1,52 @@
+Name     STEBusZ80Interface ;
+PartNo   00 ;
+Date     8/7/2019 ;
+Revision 01 ;
+Designer Zachary Hickman ;
+Company  n/a ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+/*
+ * Bus Interface for Z80 SBC
+ */
+
+/* *************** INPUT PINS ******************** */
+PIN 1		= SYSCLK	; /* System Clock */
+PIN 2		= !RFSH		; /* Refresh */
+PIN 3		= !M1		; /* M1 */
+PIN 4		= !RD		; /* Read */
+PIN 5		= !WR		; /* Write */
+PIN 6		= !MREQ		; /* Memory Request */
+PIN 7		= !IORQ		; /* I/O Request */
+PIN 8		= !DATACK	; /* STEbus: Data Acknoledge */
+PIN 9		= !TFRERR	; /* STEbus: Transfer Error */
+PIN 10		= !ONBOARD	; /* Onboard access or STEBus access */
+
+/* *************** OUTPUT PINS ******************** */
+PIN 23		= !WAIT		; /* Wait */
+PIN 22		= CM2		; /* STEbus: CM2 (Normal/!Fetch) */
+PIN 21		= CM1		; /* STEbus: CM1 (Memory/!I/O) */
+PIN 20		= CM0		; /* STEbus: CM0 (Read/!Write) */
+PIN 19		= WRITE		; /* STEbus: Direction for Bus Buffers (A->B) */
+PIN 18 		= !BUSSTB	; /* STEbus: Data and Address Strobe */
+PIN 17		= INTACK	; /* Interrupt Ack Signal */
+
+/* *************** NODES ******************** */
+PIN 14		= STROBE	; /* Strobe node */
+
+/* *************** SET/CLEARS ******************** */
+BUSSTB.SP	= !STROBE;
+BUSSTB.AR	= 'b'0;
+
+/* *************** EQUATIONS ******************** */
+WAIT 		= ( ( MREQ & !RFSH # IORQ ) & !DATACK & !TFRERR ) & !ONBOARD;
+CM2			= ( MREQ # IORQ & !M1 ) & !ONBOARD; 
+CM1			= ( MREQ # IORQ & M1 ) & !ONBOARD; 
+CM0			= ( RD # M1 )& !ONBOARD; 
+STROBE		= ( MREQ & ( RD # WR ) # IORQ & ( RD # WR # M1 ) ) & !ONBOARD;
+BUSSTB.D	= STROBE;
+INTACK		= IORQ & M1;
+WRITE		= !CM0;
+

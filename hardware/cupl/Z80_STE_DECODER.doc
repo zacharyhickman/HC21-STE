@@ -1,0 +1,107 @@
+
+*******************************************************************************
+                                z80_ste_decoder
+*******************************************************************************
+
+CUPL(WM)        5.0a Serial# 60008009
+Device          g22v10  Library DLIB-h-40-1
+Created         Sat Nov 16 15:55:09 2019
+Name            z80_ste_decoder 
+Partno          00 
+Revision        01 
+Date            11/16/2019 
+Designer        Zachary Hickman  
+Company         n/a 
+Assembly        None 
+Location        
+
+===============================================================================
+                            Expanded Product Terms
+===============================================================================
+
+ADDR =>
+    A15 , A14 , A13 , A12 , A11 , A10
+
+CTC =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+DECO =>
+    LOWMEM , STEBUS , MMU , CTC , PIO , SIO , HIMEM
+
+HIMEM =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+LOWMEM =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+MMU =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+PIO =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+SIO =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+STEBUS =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+CTC.oe  =>
+    1 
+
+HIMEM.oe  =>
+    1 
+
+LOWMEM.oe  =>
+    1 
+
+MMU.oe  =>
+    1 
+
+PIO.oe  =>
+    1 
+
+SIO.oe  =>
+    1 
+
+STEBUS.oe  =>
+    1 
+
+
+===============================================================================
+                                 Symbol Table
+===============================================================================
+
+Pin Variable                                    Pterms   Max     Min    
+Pol   Name              Ext     Pin     Type     Used   Pterms  Level   
+--- --------            ---     ---     ----    ------  ------  -----   
+
+    A10                         7        V        -       -       -     
+    A11                         6        V        -       -       -     
+    A12                         5        V        -       -       -     
+    A13                         4        V        -       -       -     
+    A14                         3        V        -       -       -     
+    A15                         2        V        -       -       -     
+    ADDR                        0        F        -       -       -     
+    CTC                         20       V        1       14      4     
+    DECO                        0        F        -       -       -     
+    HIMEM                       17       V        1       14      4     
+    LOWMEM                      23       V        1       8       4     
+    MMU                         21       V        1       12      4     
+    PIO                         19       V        1       16      4     
+    SIO                         18       V        1       16      4     
+    STEBUS                      22       V        1       10      4     
+    CTC                 oe      20       D        1       1       0     
+    HIMEM               oe      17       D        1       1       0     
+    LOWMEM              oe      23       D        1       1       0     
+    MMU                 oe      21       D        1       1       0     
+    PIO                 oe      19       D        1       1       0     
+    SIO                 oe      18       D        1       1       0     
+    STEBUS              oe      22       D        1       1       0     
+
+
+LEGEND    D : default variable         F : field      G : group
+          I : intermediate variable    N : node       M : extended node
+          U : undefined                V : variable   X : extended variable
+          T : function
+

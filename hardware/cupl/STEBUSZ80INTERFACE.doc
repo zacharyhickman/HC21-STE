@@ -1,0 +1,128 @@
+
+*******************************************************************************
+                              STEBusZ80Interface
+*******************************************************************************
+
+CUPL(WM)        5.0a Serial# 60008009
+Device          g22v10  Library DLIB-h-40-1
+Created         Fri Aug 09 22:48:15 2019
+Name            STEBusZ80Interface 
+Partno          00 
+Revision        01 
+Date            8/7/2019 
+Designer        Zachary Hickman 
+Company         n/a 
+Assembly        None 
+Location        
+
+===============================================================================
+                            Expanded Product Terms
+===============================================================================
+
+BUSSTB.d  =>
+    STROBE
+
+BUSSTB.ar  =>
+    0 
+
+BUSSTB.sp  =>
+    !STROBE
+
+CM0 =>
+    !ONBOARD & RD
+  # M1 & !ONBOARD
+
+CM1 =>
+    IORQ & M1 & !ONBOARD
+  # MREQ & !ONBOARD
+
+CM2 =>
+    IORQ & !M1 & !ONBOARD
+  # MREQ & !ONBOARD
+
+INTACK =>
+    IORQ & M1
+
+STROBE =>
+    MREQ & !ONBOARD & WR
+  # MREQ & !ONBOARD & RD
+  # IORQ & M1 & !ONBOARD
+  # IORQ & !ONBOARD & WR
+  # IORQ & !ONBOARD & RD
+
+WAIT =>
+    !DATACK & MREQ & !ONBOARD & !RFSH & !TFRERR
+  # !DATACK & IORQ & !ONBOARD & !TFRERR
+
+WRITE =>
+    !CM0
+
+BUSSTB.oe  =>
+    1 
+
+CM0.oe  =>
+    1 
+
+CM1.oe  =>
+    1 
+
+CM2.oe  =>
+    1 
+
+INTACK.oe  =>
+    1 
+
+STROBE.oe  =>
+    1 
+
+WAIT.oe  =>
+    1 
+
+WRITE.oe  =>
+    1 
+
+
+===============================================================================
+                                 Symbol Table
+===============================================================================
+
+Pin Variable                                    Pterms   Max     Min    
+Pol   Name              Ext     Pin     Type     Used   Pterms  Level   
+--- --------            ---     ---     ----    ------  ------  -----   
+
+ !  BUSSTB                      18       V        -       -       -     
+ !  BUSSTB              d       18       X        1       16      4     
+    BUSSTB              ar      18       X        1       1       1     
+    BUSSTB              sp      18       X        1       1       1     
+    CM0                         20       V        2       14      4     
+    CM1                         21       V        2       12      4     
+    CM2                         22       V        2       10      4     
+ !  DATACK                      8        V        -       -       -     
+    INTACK                      17       V        1       14      4     
+ !  IORQ                        7        V        -       -       -     
+ !  M1                          3        V        -       -       -     
+ !  MREQ                        6        V        -       -       -     
+ !  ONBOARD                     10       V        -       -       -     
+ !  RD                          4        V        -       -       -     
+ !  RFSH                        2        V        -       -       -     
+    STROBE                      14       V        5       8       4     
+    SYSCLK                      1        V        -       -       -     
+ !  TFRERR                      9        V        -       -       -     
+ !  WAIT                        23       V        2       8       4     
+ !  WR                          5        V        -       -       -     
+    WRITE                       19       V        1       16      4     
+    BUSSTB              oe      18       D        1       1       0     
+    CM0                 oe      20       D        1       1       0     
+    CM1                 oe      21       D        1       1       0     
+    CM2                 oe      22       D        1       1       0     
+    INTACK              oe      17       D        1       1       0     
+    STROBE              oe      14       D        1       1       0     
+    WAIT                oe      23       D        1       1       0     
+    WRITE               oe      19       D        1       1       0     
+
+
+LEGEND    D : default variable         F : field      G : group
+          I : intermediate variable    N : node       M : extended node
+          U : undefined                V : variable   X : extended variable
+          T : function
+

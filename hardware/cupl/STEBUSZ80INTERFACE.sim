@@ -1,0 +1,88 @@
+%SIGNAL
+PIN  18 = !BUSSTB 
+PIN  20 =  CM0 
+PIN  21 =  CM1 
+PIN  22 =  CM2 
+PIN   8 = !DATACK 
+PIN  17 =  INTACK 
+PIN   7 = !IORQ 
+PIN   3 = !M1 
+PIN   6 = !MREQ 
+PIN  10 = !ONBOARD 
+PIN   4 = !RD 
+PIN   2 = !RFSH 
+PIN  14 =  STROBE 
+PIN   1 =  SYSCLK 
+PIN   9 = !TFRERR 
+PIN  23 = !WAIT 
+PIN   5 = !WR 
+PIN  19 =  WRITE 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+BUSSTB.d  =>
+    STROBE
+
+BUSSTB.ar  =>
+    0 
+
+BUSSTB.sp  =>
+    !STROBE
+
+CM0 =>
+    ONBOARD & !RD
+  # !M1 & ONBOARD
+
+CM1 =>
+    !IORQ & !M1 & ONBOARD
+  # !MREQ & ONBOARD
+
+CM2 =>
+    !IORQ & M1 & ONBOARD
+  # !MREQ & ONBOARD
+
+INTACK =>
+    !IORQ & !M1
+
+STROBE =>
+    !MREQ & ONBOARD & !WR
+  # !MREQ & ONBOARD & !RD
+  # !IORQ & !M1 & ONBOARD
+  # !IORQ & ONBOARD & !WR
+  # !IORQ & ONBOARD & !RD
+
+WAIT =>
+    DATACK & !MREQ & ONBOARD & RFSH & TFRERR
+  # DATACK & !IORQ & ONBOARD & TFRERR
+
+WRITE =>
+    !CM0
+
+BUSSTB.oe  =>
+    1 
+
+CM0.oe  =>
+    1 
+
+CM1.oe  =>
+    1 
+
+CM2.oe  =>
+    1 
+
+INTACK.oe  =>
+    1 
+
+STROBE.oe  =>
+    1 
+
+WAIT.oe  =>
+    1 
+
+WRITE.oe  =>
+    1 
+
+%END

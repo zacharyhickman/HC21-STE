@@ -1,0 +1,55 @@
+
+*******************************************************************************
+                                 STEBusZ80MMU
+*******************************************************************************
+
+CUPL(WM)        5.0a Serial# 60008009
+Device          g22v10  Library DLIB-h-40-1
+Created         Sun Aug 11 11:09:44 2019
+Name            STEBusZ80MMU 
+Partno          00 
+Revision        01 
+Date            8/7/2019 
+Designer        Zachary Hickman 
+Company         n/a 
+Assembly        None 
+Location        
+
+===============================================================================
+                            Expanded Product Terms
+===============================================================================
+
+
+===============================================================================
+                                 Symbol Table
+===============================================================================
+
+Pin Variable                                    Pterms   Max     Min    
+Pol   Name              Ext     Pin     Type     Used   Pterms  Level   
+--- --------            ---     ---     ----    ------  ------  -----   
+
+    A16                         17       V        -       -       -     
+    A17                         18       V        -       -       -     
+    A18                         19       V        -       -       -     
+    A19                         20       V        -       -       -     
+ !  CS                          3        V        -       -       -     
+    D0                          6        V        -       -       -     
+    D1                          7        V        -       -       -     
+    D2                          8        V        -       -       -     
+    D3                          9        V        -       -       -     
+    D4                          10       V        -       -       -     
+    D5                          11       V        -       -       -     
+ !  OB_RAM                      22       V        -       -       -     
+ !  OB_ROM                      21       V        -       -       -     
+ !  ONBOARD                     23       V        -       -       -     
+ !  RD                          4        V        -       -       -     
+ !  RFSH                        2        V        -       -       -     
+    SYSCLK                      1        V        -       -       -     
+ !  WR                          5        V        -       -       -     
+
+
+LEGEND    D : default variable         F : field      G : group
+          I : intermediate variable    N : node       M : extended node
+          U : undefined                V : variable   X : extended variable
+          T : function
+

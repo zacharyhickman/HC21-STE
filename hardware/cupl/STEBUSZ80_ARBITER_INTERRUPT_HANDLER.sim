@@ -1,0 +1,89 @@
+%SIGNAL
+PIN  23 =  A0 
+PIN  22 =  A1 
+PIN  21 =  A2 
+PIN   2 = !ATNRQ0 
+PIN   3 = !ATNRQ1 
+PIN   4 = !ATNRQ2 
+PIN   5 = !ATNRQ3 
+PIN   6 = !ATNRQ4 
+PIN   7 = !ATNRQ5 
+PIN   8 = !ATNRQ6 
+PIN   9 = !ATNRQ7 
+PIN  13 = !BUSAK 
+PIN  20 = !BUSAK0 
+PIN  19 = !BUSAK1 
+PIN  18 = !BUSRQ 
+PIN  10 = !BUSRQ0 
+PIN  11 = !BUSRQ1 
+PIN  17 = !INT 
+PIN  16 = !NMI 
+PIN   1 =  SYSCLK 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+A0 =>
+    ATNRQ0 & ATNRQ2 & ATNRQ4 & ATNRQ6 & !ATNRQ7
+  # ATNRQ0 & ATNRQ2 & ATNRQ4 & !ATNRQ5
+  # ATNRQ0 & ATNRQ2 & !ATNRQ3
+  # ATNRQ0 & !ATNRQ1
+
+A1 =>
+    ATNRQ0 & ATNRQ1 & ATNRQ4 & ATNRQ5 & ATNRQ6 & !ATNRQ7
+  # ATNRQ0 & ATNRQ1 & ATNRQ2 & !ATNRQ3
+  # ATNRQ0 & ATNRQ1 & !ATNRQ2
+
+A2 =>
+    ATNRQ0 & ATNRQ1 & ATNRQ2 & ATNRQ3 & ATNRQ5 & ATNRQ6 & !ATNRQ7
+  # ATNRQ0 & ATNRQ1 & ATNRQ2 & ATNRQ3 & !ATNRQ4
+
+BUSAK0 =>
+    !BUSAK & BUSAK1 & !BUSRQ0 & BUSRQ1
+
+BUSAK1 =>
+    !BUSAK & BUSAK0 & BUSRQ0 & !BUSRQ1
+
+BUSRQ =>
+    !BUSRQ1
+  # !BUSRQ0
+
+INT =>
+    !ATNRQ7
+  # !ATNRQ6
+  # !ATNRQ5
+  # !ATNRQ4
+  # !ATNRQ3
+  # !ATNRQ2
+  # !ATNRQ1
+
+NMI =>
+    !ATNRQ0
+
+A0.oe  =>
+    1 
+
+A1.oe  =>
+    1 
+
+A2.oe  =>
+    1 
+
+BUSAK0.oe  =>
+    1 
+
+BUSAK1.oe  =>
+    1 
+
+BUSRQ.oe  =>
+    1 
+
+INT.oe  =>
+    1 
+
+NMI.oe  =>
+    1 
+
+%END

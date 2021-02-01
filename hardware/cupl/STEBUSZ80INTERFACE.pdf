@@ -1,0 +1,206 @@
+{COMPONENT D:\FILES\HOMEBREW\Z80_SBC_STEBUS\CUPL\STEBUSZ80INTERFACE.SYM
+
+ {ENVIRONMENT
+  {PDIFvrev 3.00}
+  {Program "CUPL(WM) Version 5.0a"}
+  {DBtype "Schematic"}
+  {DBvrev 1.01}
+  {DBtime "Fri Aug 09 22:48:15 2019 "}
+  {DBunit "MIL"}
+  {DBgrid 10}
+  {Lyrstr "WIRES" 1 "BUS" 1 "GATE" 2 "IEEE" 2 "PINFUN" 3 "PINNUM" 1 
+          "PINNAM" 6 "PINCON" 4 "REFDES" 2 "ATTR" 6 "SDOT" 1 
+          "DEVICE" 5 "OUTLIN" 5 "ATTR2" 6 "NOTES" 6 "NETNAM" 4 
+          "CMPNAM" 5 "BORDER" 5}
+ }
+
+ {USER
+  {VIEW
+   {Mode SYMB}
+   {Nlst OPEN}
+   {Vw 0 0 2}
+   {Lv 12 2 2 2 0 0 2 2 2 2 0 0 2 1 2 0 0 0 0}
+   {Gs 10 10}
+  }
+ }
+
+ {DISPLAY
+  [Ly "PINNUM"]
+  [Ls "SOLID"][Wd 0]
+  [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+ }
+
+ {SYMBOL
+  {PIN_DEF
+   [Ly "PINCON"]
+   {P SYSCLK {Pt "INPUT"}{Lq 0}{Ploc 100 220}}
+   {P RFSH' {Pt "INPUT"}{Lq 0}{Ploc 100 180}}
+   {P M1' {Pt "INPUT"}{Lq 0}{Ploc 100 160}}
+   {P RD' {Pt "INPUT"}{Lq 0}{Ploc 100 140}}
+   {P WR' {Pt "INPUT"}{Lq 0}{Ploc 100 120}}
+   {P MREQ' {Pt "INPUT"}{Lq 0}{Ploc 100 100}}
+   {P IORQ' {Pt "INPUT"}{Lq 0}{Ploc 100 80}}
+   {P DATACK' {Pt "INPUT"}{Lq 0}{Ploc 100 60}}
+   {P TFRERR' {Pt "INPUT"}{Lq 0}{Ploc 100 40}}
+   {P ONBOARD' {Pt "INPUT"}{Lq 0}{Ploc 100 20}}
+   {P STROBE {Pt "I/O"}{Lq 0}{Ploc 330 20}}
+   {P INTACK {Pt "I/O"}{Lq 0}{Ploc 330 40}}
+   {P WRITE {Pt "I/O"}{Lq 0}{Ploc 330 60}}
+   {P CM0 {Pt "I/O"}{Lq 0}{Ploc 330 80}}
+   {P CM1 {Pt "I/O"}{Lq 0}{Ploc 330 100}}
+   {P CM2 {Pt "I/O"}{Lq 0}{Ploc 330 120}}
+   {P WAIT' {Pt "I/O"}{Lq 0}{Ploc 330 140}}
+   {P BUSSTB' {Pt "OUTPUT"}{Lq 0}{Ploc 330 160}}
+  }
+
+  {PKG
+   [Ly "REFDES"]
+   [Ts 25][Tj "CB"][Tr 0][Tm "N"]
+   {Rdl 215 250}
+
+   [Ly "PINNUM"]
+   [Ts 15][Tj "RC"]
+   {Pnl 120 230}
+   [Ts 15][Tj "RC"]
+   {Pnl 120 190}
+   {Pnl 120 170}
+   {Pnl 120 150}
+   {Pnl 120 130}
+   {Pnl 120 110}
+   {Pnl 120 90}
+   {Pnl 120 70}
+   {Pnl 120 50}
+   {Pnl 120 30}
+   [Ts 15][Tj "LC"]
+   {Pnl 310 30}
+   {Pnl 310 50}
+   {Pnl 310 70}
+   {Pnl 310 90}
+   {Pnl 310 110}
+   {Pnl 310 130}
+   {Pnl 310 150}
+   {Pnl 310 170}
+
+   {Sd A 1 2 3 4 5 6 7 8 9 10 14 17 19 20 21 22 23 18}
+  }
+
+  {PIC
+   [Ly "GATE"]
+   [Ts 15][Tj "LC"][Tr 0][Tm "N"]
+   {R 130 240 300 0}
+   {L 130 220 100 220}
+   {L 130 230 140 220 130 210}
+   {L 120 180 100 180}
+   {C 125 180 5}
+   {L 120 160 100 160}
+   {C 125 160 5}
+   {L 120 140 100 140}
+   {C 125 140 5}
+   {L 120 120 100 120}
+   {C 125 120 5}
+   {L 120 100 100 100}
+   {C 125 100 5}
+   {L 120 80 100 80}
+   {C 125 80 5}
+   {L 120 60 100 60}
+   {C 125 60 5}
+   {L 120 40 100 40}
+   {C 125 40 5}
+   {L 120 20 100 20}
+   {C 125 20 5}
+   {L 300 20 330 20}
+   {L 300 40 330 40}
+   {L 300 60 330 60}
+   {L 300 80 330 80}
+   {L 300 100 330 100}
+   {L 300 120 330 120}
+   {C 305 140 5}
+   {L 310 140 330 140}
+   {C 305 160 5}
+   {L 310 160 330 160}
+   [Ly "PINNAM"]
+   [Tj "LC"]
+   {T "SYSCLK" 140 220}
+   {T "RFSH'" 140 180}
+   {T "M1'" 140 160}
+   {T "RD'" 140 140}
+   {T "WR'" 140 120}
+   {T "MREQ'" 140 100}
+   {T "IORQ'" 140 80}
+   {T "DATACK'" 140 60}
+   {T "TFRERR'" 140 40}
+   {T "ONBOARD'" 140 20}
+   [Tj "RC"]
+   {T "STROBE" 290 20}
+   {T "INTACK" 290 40}
+   {T "WRITE" 290 60}
+   {T "CM0" 290 80}
+   {T "CM1" 290 100}
+   {T "CM2" 290 120}
+   {T "WAIT'" 290 140}
+   {T "BUSSTB'" 290 160}
+   [Ly "DEVICE"]
+   [Tj "CT"]
+   {T "G22V10" 215 -10}
+  }
+
+  {ATR
+   {IN
+    {Org 100 20}
+    {Ty 255}
+   }
+   {EX
+    [Ly "ATTR2"]
+    [Ts 12][Tj "CT"][Tr 0][Tm "N"]
+    {At PLD D:\FILES\HOMEBREW\Z80_SBC_STEBUS\CUPL\STEBUSZ80INTERFACE 215 240}
+   }
+  }
+ }
+
+ {DETAIL
+  {ANNOTATE
+  }
+
+  {NET_DEF
+   {N SYSCLK
+   }
+   {N RFSH'
+   }
+   {N M1'
+   }
+   {N RD'
+   }
+   {N WR'
+   }
+   {N MREQ'
+   }
+   {N IORQ'
+   }
+   {N DATACK'
+   }
+   {N TFRERR'
+   }
+   {N ONBOARD'
+   }
+   {N STROBE
+   }
+   {N INTACK
+   }
+   {N WRITE
+   }
+   {N CM0
+   }
+   {N CM1
+   }
+   {N CM2
+   }
+   {N WAIT'
+   }
+   {N BUSSTB'
+   }
+  }
+
+  {SUBCOMP
+  }
+ }
+}

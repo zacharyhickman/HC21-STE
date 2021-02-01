@@ -1,0 +1,37 @@
+Name     STEBusZ80MMU ;
+PartNo   00 ;
+Date     8/7/2019 ;
+Revision 01 ;
+Designer Zachary Hickman ;
+Company  n/a ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+/*
+ * MMU for Z80 SBC
+ */
+
+/* INPUT PINS */
+PIN 1 = SYSCLK;
+PIN 2 = !IORQ;
+PIN 3 = !STE;
+PIN 4 = !MMUB;
+PIN 5 = !RD;
+PIN 6 = !WR;
+PIN [11..6]	= [D5..0];
+PIN [15..13] = [D7..6];
+
+/* BIDIR PINS */
+
+/* OUTPUT PINS */
+PIN [20..17] = [A19..16];
+
+/* NODES */
+
+/* SET/CLEARS */
+
+/* OUTPUT ENABLES */
+
+/* EQUATIONS */
+

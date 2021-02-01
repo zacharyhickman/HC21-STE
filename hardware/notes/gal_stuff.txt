@@ -1,0 +1,5 @@
+\\\\ ARBITER GAL LOGIC
+
+/BUSRQ0 = /
+
+////

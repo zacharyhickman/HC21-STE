@@ -1,0 +1,65 @@
+%SIGNAL
+PIN   7 =  A10 
+PIN   6 =  A11 
+PIN   5 =  A12 
+PIN   4 =  A13 
+PIN   3 =  A14 
+PIN   2 =  A15 
+PIN  20 =  CTC 
+PIN  17 =  HIMEM 
+PIN  23 =  LOWMEM 
+PIN  21 =  MMU 
+PIN  19 =  PIO 
+PIN  18 =  SIO 
+PIN  22 =  STEBUS 
+%END
+
+%FIELD
+FIELD ADDR = A15,A14,A13,A12,A11,A10
+FIELD DECO = LOWMEM,STEBUS,MMU,CTC,PIO,SIO,HIMEM
+%END
+
+%EQUATION
+CTC =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+HIMEM =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+LOWMEM =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+MMU =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+PIO =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+SIO =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+STEBUS =>
+    !A10 & !A11 & !A12 & !A13 & !A14 & !A15
+
+CTC.oe  =>
+    1 
+
+HIMEM.oe  =>
+    1 
+
+LOWMEM.oe  =>
+    1 
+
+MMU.oe  =>
+    1 
+
+PIO.oe  =>
+    1 
+
+SIO.oe  =>
+    1 
+
+STEBUS.oe  =>
+    1 
+
+%END

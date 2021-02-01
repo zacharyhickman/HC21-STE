@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name z80_ste-cache)(type Legacy)(uri D:/Files/Homebrew/Z80_SBC_STEBus/z80_ste/z80_ste-cache.lib)(options "")(descr ""))
+  (lib (name STEBus_Interface_GAL22V10)(type Legacy)(uri D:/Users/Sumyunguy/kicad_libs/user_lib/user-symbols/STEBus_Interface_GAL22V10.lib)(options "")(descr ""))
+)
