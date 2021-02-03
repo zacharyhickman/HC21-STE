@@ -1,0 +1,29 @@
+# input sysclk;
+# input [7:0] atnrq_n;
+# input [1:0] busrq_n;
+# input cpu_busak_n;
+# output [2:0] addr;
+# output [1:0] busak_n;
+# output cpu_busrq_n;
+# output cpu_int_n;
+# output cpu_nmi_n;
+1,sysclk
+2,atnrq_n[7]
+3,atnrq_n[6]
+4,atnrq_n[5]
+5,atnrq_n[4]
+6,atnrq_n[3]
+7,atnrq_n[2]
+8,atnrq_n[1]
+9,atnrq_n[0]
+10,busrq_n[1]
+11,busrq_n[0]
+13,cpu_busak_n
+23,addr[2]
+22,addr[1]
+21,addr[0]
+20,busak_n[1]
+19,busak_n[0]
+18,cpu_busrq_n
+17,cpu_int_n
+16,cpu_nmi_n

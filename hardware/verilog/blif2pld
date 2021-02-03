@@ -1,0 +1,148 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Data::Dumper;
+use Getopt::Std;
+
+$Getopt::Std::STANDARD_HELP_VERSION = 1;
+
+our $VERSION = 0.1;
+
+sub HELP_MESSAGE {
+	printf "Usage: $0 -d <device> -f <blif_file> -p <pin_file> -o <pld_file>\n";
+}
+
+our ($opt_d,$opt_f,$opt_o,$opt_p);
+
+getopts('d:f:o:p:');
+
+my $device = $opt_d;
+my $pin_filename = $opt_p;
+my $blif_filename = $opt_f;
+my $pld_filename = $opt_o;
+
+my $pin_fh;
+my $blif_fh;
+my $pld_fh;
+
+my %pin_info;
+my %blif_info;
+my %pld_info;
+
+# Get device details
+my @valid_devices = qw(gal22v10);
+my $dev_num_pins;
+my $dev_gnd_pin;
+my $dev_vcc_pin;
+my @dev_in_pins;
+my @dev_out_pins;
+
+if ($device =~ /gal22v10/i) {
+	$dev_num_pins = 24;
+	$dev_gnd_pin = 12;
+	$dev_vcc_pin = 24;
+	push @dev_in_pins, (1..11), (13..23);
+	push @dev_out_pins, (14..23);
+} else {
+	printf "ERROR: Unknown device $device. Device must be one of @valid_devices\n";
+	exit 1;
+}
+
+my %valid_in_pins = map { $_ => 1 } @dev_in_pins;
+my %valid_out_pins = map { $_ => 1 } @dev_out_pins;
+
+# Read pin mapping from file
+open ($pin_fh, '<', $pin_filename) or die "$!";
+while (my $line = <$pin_fh>) {
+	if ($line =~ /^\s*(\d+)\s*\,\s*(\S+)\s*$/) {
+		my $pinidx = $1;
+		my $pinname = $2;
+
+		# Check for device issues related to mapping over gnd or vcc pins.
+		if ($pinidx == $dev_gnd_pin) {
+			printf "WARN: Pin $pinname is mapped to $pinidx, which is a GND pin on selected device $device\n";
+		}
+		if ($pinidx == $dev_vcc_pin) {
+			printf "WARN: Pin $pinname is mapped to $pinidx, which is a VCC pin on selected device $device\n";
+		}
+
+		$pin_info{$pinidx} = $pinname;
+	}
+}
+close ($pin_fh);
+
+# Read blif
+open ($blif_fh, '<', $blif_filename) or die "$!";
+while (my $line = <$blif_fh>) {
+	if ($line =~ /\.model\s+(\S+)/) {
+		$blif_info{'name'} = $1;
+	}
+	if ($line =~ /^\.inputs(.*)$/m) {
+		my @sigs;
+		my $sig = $1;
+		$sig =~ s/\s+/ /g;
+		push @sigs, split (/ /, $sig);
+		#print Dumper @sigs;
+		$blif_info{'inputs'} = \@sigs;
+	}
+	if ($line =~ /^\.outputs(.*)$/m) {
+		my @sigs;
+		my $sig = $1;
+		$sig =~ s/\s+/ /g;
+		push @sigs, split (/ /, $sig);
+		#print Dumper @sigs;
+		$blif_info{'outputs'} = \@sigs;
+	}
+	if ($line =~ /^\.names(.*)$/m) {
+		my %gate;
+		my @sigs;
+		my @terms;
+		my $sig = $1;
+		$sig =~ s/\s+/ /g;
+		push @sigs, split (/ /, $sig);
+		my $termln = <$blif_fh>;
+		#print Dumper @sigs;
+		#$gate{'out'} = 
+		#$gate{'signals'} = \@sigs;
+
+
+		push @{$blif_info{'gates'}}, \%gate
+	}
+}
+close ($blif_fh);
+
+# Map blif pins to pld
+$pld_info{$dev_gnd_pin} = "GND";
+$pld_info{$dev_vcc_pin} = "VCC";
+foreach my $in (@{$blif_info{'inputs'}}) {
+	foreach my $pinidx (keys %pin_info) {
+		if ($in eq $pin_info{$pinidx}) {
+			if (not exists($valid_in_pins{$pinidx})) {
+				printf "WARN: Input pin $in is mapped to non-input on device $device\n";
+			}
+			$pld_info{$pinidx} = "$in";	
+		}
+	}
+}
+foreach my $out (@{$blif_info{'outputs'}}) {
+	foreach my $pinidx (keys %pin_info) {
+		if ($out eq $pin_info{$pinidx}) {
+			if (not exists($valid_out_pins{$pinidx})) {
+				printf "WARN: Output pin $out is mapped to non-output on device $device\n";
+			}
+			$pld_info{$pinidx} = "$out";	
+		}
+	}
+}
+
+open ($pld_fh, '>', $pld_filename) or die "$!";
+printf $pld_fh "$device\n";
+printf $pld_fh "$blif_info{'name'}\n";
+foreach my $pinidx (1..$dev_num_pins) {
+	printf $pld_fh (exists($pld_info{$pinidx})) ? "$pld_info{$pinidx} " : "NC ";
+}
+
+close ($pld_fh);
+

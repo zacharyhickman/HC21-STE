@@ -13,7 +13,7 @@ The HC21-STE (Homebrew Computer 2021 - STEbus) is a homebrew computer that imple
 <!--
 * [ncurses](https://en.wikipedia.org/wiki/Ncurses)
 -->
-* [galasm](https://github.com/daveho/GALasm)
+* [GALasm](https://github.com/daveho/GALasm)
 
 ### Languages Used ###
 
