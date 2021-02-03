@@ -11,7 +11,7 @@ module hc21_z80_interface (
 	onboard_n,
 	cpu_wait_n,
 	cm,
-	write,
+	bufout,
 	busstb_n,
 	intack
 );
@@ -57,4 +57,4 @@ module hc21_z80_interface (
 
 	end
 
-endmodule : hc21_z80_interface 
+endmodule 

@@ -1,6 +1,6 @@
 module hc21_ste_decoder (
 	sysclk,
-	addr,
+	cpu_addr,
 	sel_lomem_n,
 	sel_stebus_n,
 	sel_mmu_a_n,
@@ -199,4 +199,4 @@ module hc21_ste_decoder (
 
 	end
 
-endmodule : hc21_ste_decoder 
+endmodule 

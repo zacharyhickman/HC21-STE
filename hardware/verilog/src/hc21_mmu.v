@@ -23,4 +23,4 @@ module hc21_mmu (
 		// TODO: Make MMU to MMU stuff	
 	end
 
-endmodule : hc21_mmu 
+endmodule 

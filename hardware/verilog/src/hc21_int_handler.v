@@ -50,4 +50,4 @@ module hc21_int_handler (
 		cpu_busrq_n <= busrq_n[0] & busrq_n[1];
 	end
 
-endmodule : hc21_int_handler 
+endmodule
